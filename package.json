@@ -1,0 +1,24 @@
+{
+  "name": "playwrightts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test example.spec.ts --project=chromium --headed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.27.1",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "eslint": "^8.23.1",
+    "eslint-plugin-playwright": "^0.10.0",
+    "otpauth": "^8.0.3"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "printWidth": 150
+  }
+}
