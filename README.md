@@ -1,4 +1,5 @@
-# Playwright - Page object model
+# Playwright - Page object model-Doctor Appoinment and Dental servive -webapp
+# Author - Hari Prasath K
 
 ## Setup
 
@@ -7,7 +8,7 @@
 - Install dependencies `npm install`
 - Install supported browsers `npx playwright`
 - Install recommended VS Code extensions
-- Make a copy of `account-sample.json` and rename it to `account.json` _(input valid user data to login)_
+- use this `account.json` for Data inputs to test _(input valid user data to login)_
 
 ## Running tests ([docs](https://playwright.dev/docs/running-tests))
 
