@@ -6,7 +6,7 @@ import { sendResultNoti } from "../src/utils/slack";
 
 test("Verify user can login with valid credentials ", async ({ page, request }, testResult) => {
   
-  await page.goto("http://localhost:3000/");
+  await page.goto("http://www.google.com");
 
   const Homepage = new HomePage(page);
   Homepage.verifyHomeWelcomeMessage("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore eveniet necessi");
