@@ -18,5 +18,5 @@ test("Verify user can login with valid credentials ", async ({ page, request }, 
   await loginpage.submit();
   
 
-  await sendResultNoti(request, testResult);
+  //await sendResultNoti(request, testResult);
 });
