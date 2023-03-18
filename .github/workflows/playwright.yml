@@ -51,7 +51,6 @@ jobs:
         working-directory: /opt
       - name: Run tests and generate report
         run: |
-          ./gradlew clean test
           /opt/allure-2.14.0/bin/allure generate build/allure-results --clean -o build/allure-report
       - name: Send report by email
         run: |
