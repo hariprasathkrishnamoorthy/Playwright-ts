@@ -53,5 +53,5 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y mailutils  
       - name: Send report by email
         run: |
-          echo "See attached Allure report for test execution results." | /usr/bin/mailx -s "Test Execution Results" -a playwright-report/index.html hariprasath.krishnamoorthy@ideas2it.com
+           echo "See attached Playwright report." | mailx -s "Playwright report" -a "playwright-report/index.html"  hariprasath.krishnamoorthy@ideas2it.com
 
