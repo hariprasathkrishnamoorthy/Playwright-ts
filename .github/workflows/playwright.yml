@@ -52,7 +52,7 @@ jobs:
       - name: Run tests and generate report
         run: |
           /opt/allure-2.14.0/bin/allure generate build/allure-results --clean -o build/allure-report
-        name: Install mailx
+      - name: Install mailx
         run: sudo apt-get update && sudo apt-get install -y mailutils  
       - name: Send report by email
         run: |
