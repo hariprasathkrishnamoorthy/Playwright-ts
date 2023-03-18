@@ -44,7 +44,7 @@ jobs:
               tar -zxvf allure-2.14.0.tgz -C /opt/
               ln -s /opt/allure-2.14.0/bin/allure /usr/bin/allure
       - name: Print current working directory
-        run: echo "Current working directory: ${{ github.workspace }} "        
+        run: pwd       
         
       - name: Generate Allure report
         run: |
