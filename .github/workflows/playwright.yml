@@ -52,6 +52,8 @@ jobs:
       - name: Run tests and generate report
         run: |
           /opt/allure-2.14.0/bin/allure generate build/allure-results --clean -o build/allure-report
+        name: Install mailx
+        run: sudo apt-get update && sudo apt-get install -y mailutils  
       - name: Send report by email
         run: |
           echo "See attached Allure report for test execution results." | /usr/bin/mailx -s "Test Execution Results" -a build/allure-report/index.html hariprasath.krishnamoorthy@ideas2it.com
