@@ -32,7 +32,7 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
-     generate-report:
+  generate-report:
      steps:
       - name: Checkout repository
         uses: actions/checkout@v2
