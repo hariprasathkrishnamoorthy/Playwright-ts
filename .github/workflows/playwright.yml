@@ -38,10 +38,11 @@ jobs:
      steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Setup Java
+      - name: Setup Java and gradle
         uses: actions/setup-java@v1
         with:
           java-version: '11'
+          gradle-version: '7.3.3'
       - name: Install Allure command-line tool
         run: |
           wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.14.0/allure-commandline-2.14.0.zip
