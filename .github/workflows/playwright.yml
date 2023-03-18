@@ -38,20 +38,20 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '11'
-      - name: Install Allure command-line tool
-        run: |
-              wget -O allure-2.14.0.tgz https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.14.0/allure-commandline-2.14.0.tgz
-              tar -zxvf allure-2.14.0.tgz -C /opt/
-              sudo ln -s /opt/allure-2.14.0/bin/allure /usr/bin/allure
-      - name: Print current working directory
-        run: pwd       
+      # - name: Install Allure command-line tool
+      #   run: |
+      #         wget -O allure-2.14.0.tgz https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.14.0/allure-commandline-2.14.0.tgz
+      #         tar -zxvf allure-2.14.0.tgz -C /opt/
+      #         sudo ln -s /opt/allure-2.14.0/bin/allure /usr/bin/allure
+      # - name: Print current working directory
+      #   run: pwd       
         
-      - name: Generate Allure report
-        run: |
-          allure generate /allure-results --clean -o allure-report
+      # - name: Generate Allure report
+      #   run: |
+      #     allure generate /allure-results --clean -o allure-report
       - name: Install mailx
         run: sudo apt-get update && sudo apt-get install -y mailutils  
       - name: Send report by email
         run: |
-          echo "See attached Allure report for test execution results." | /usr/bin/mailx -s "Test Execution Results" -a allure-report/index.html hariprasath.krishnamoorthy@ideas2it.com
+          echo "See attached Allure report for test execution results." | /usr/bin/mailx -s "Test Execution Results" -a playwright-report/index.html hariprasath.krishnamoorthy@ideas2it.com
 
