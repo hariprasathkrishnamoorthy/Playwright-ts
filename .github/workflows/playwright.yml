@@ -34,23 +34,22 @@ jobs:
           retention-days: 30
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Setup Java and gradle
+      - name: Setup Java 
         uses: actions/setup-java@v1
         with:
           java-version: '11'
-          gradle-version: '7.3.3'
       - name: Install Allure command-line tool
         run: |
           wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.14.0/allure-commandline-2.14.0.zip
           unzip allure-commandline-2.14.0.zip
           rm allure-commandline-2.14.0.zip
         working-directory: /opt
-      - name: Run tests and generate report
+      - name: Generate report
         run: |
-          /opt/allure-2.14.0/bin/allure generate build/allure-results --clean -o build/allure-report
+          /opt/allure-2.14.0/bin/allure generate allure-results --clean -o allure-report
       - name: Install mailx
         run: sudo apt-get update && sudo apt-get install -y mailutils  
       - name: Send report by email
         run: |
-          echo "See attached Allure report for test execution results." | /usr/bin/mailx -s "Test Execution Results" -a build/allure-report/index.html hariprasath.krishnamoorthy@ideas2it.com
+          echo "See attached Allure report for test execution results." | /usr/bin/mailx -s "Test Execution Results" -a allure-report/index.html hariprasath.krishnamoorthy@ideas2it.com
 
