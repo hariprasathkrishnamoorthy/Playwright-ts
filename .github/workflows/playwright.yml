@@ -33,6 +33,7 @@ jobs:
           path: playwright-report/
           retention-days: 30
   generate-report:
+     runs-on: ubuntu-latest
      steps:
       - name: Checkout repository
         uses: actions/checkout@v2
