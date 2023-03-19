@@ -35,7 +35,7 @@ jobs:
           server_port: 465
           secure: true
           username: hariprasathk14@gmail.com
-          password: 8489388286
+          password: 8489388286hari
           subject: Github Actions job result
           from: Hari Prasath 
           to: hariprasath.krishnamoorthy@ideas2it.com
