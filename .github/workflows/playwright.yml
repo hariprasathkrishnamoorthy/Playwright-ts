@@ -39,13 +39,13 @@ jobs:
       - name: Install mailx
         run: sudo apt-get update && sudo apt-get install -y mailutils  
       - name : send mail
-        run :  echo "This is the body of the email." |  mailx  -A  allure-report/index.html  - s "A mail sent using mailx" hariprasathk14@gmail.com 
+        run :  echo "See attached Allure report for test execution results." | /usr/bin/mailx -s "Test Execution Results" -A allure-report/index.html hariprasath.krishnamoorthy@ideas2it.com 
       - name : install send mailer
         run  : | 
                 sudo apt install ssmtp
                 sudo mv /usr/sbin/sendmail /usr/sbin/sendmail.ORIG
                 sudo ln -s /usr/sbin/ssmtp /usr/sbin/sendmail
-                sudo apt install postfix
+                sudo apt install postfix 
                 sudo dpkg-reconfigure postfix
       - name : test sample mail
         run :  echo "Subject hello" | sendmail hariprasathk14@gmail.com  
