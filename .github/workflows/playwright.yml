@@ -39,7 +39,7 @@ jobs:
       - name: Install mailx
         run: sudo apt-get update && sudo apt-get install -y mailutils  
       - name : send mail
-        run : $ mailx - s "A mail sent using mailx" hariprasath.krishnamoorthy@ideas2it.com -a allure-report/index.html
+        run : mailx - s "A mail sent using mailx" hariprasath.krishnamoorthy@ideas2it.com -a allure-report/index.html
 
       - uses: actions/upload-artifact@v2
         if: always()
