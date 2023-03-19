@@ -26,7 +26,7 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         run: npx playwright test --project=chromium
-        name: current working directory files
+      - name: current working directory files
         run: sudo ls  
       - uses: actions/upload-artifact@v2
         if: always()
@@ -55,5 +55,5 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y mailutils  
       - name: Send report by email
         run: |
-           echo "See attached Playwright report." | mailx -s "Playwright report" -a index.html  hariprasath.krishnamoorthy@ideas2it.com
+           echo "See attached Playwright report." | mailx -s "Playwright report" -a account.json  hariprasath.krishnamoorthy@ideas2it.com
 
