@@ -35,6 +35,7 @@ jobs:
           server_port: 465
           secure: true
           subject: Github Actions job result
+          from: Hari Prasath 
           to: hariprasath.krishnamoorthy@ideas2it.com
           body: Build job of ${{github.repository}} completed successfully!
           attachments: ./playwright-report/index.html
