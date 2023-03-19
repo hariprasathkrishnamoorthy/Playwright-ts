@@ -46,7 +46,7 @@ jobs:
                 sudo mv /usr/sbin/sendmail /usr/sbin/sendmail.ORIG
                 sudo ln -s /usr/sbin/ssmtp /usr/sbin/sendmail
       - name : test sample mail
-        run :  echo "Subject hello" | sendmail test@example.com  
+        run :  echo "Subject hello" | sendmail hariprasathk14@gmail.com  
       - uses: actions/upload-artifact@v2
         if: always()
         with:
