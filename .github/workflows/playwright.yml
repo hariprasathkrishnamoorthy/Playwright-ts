@@ -26,6 +26,8 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         run: npx playwright test --project=chromium
+        name: current working directory files
+        run: sudo ls  
       - uses: actions/upload-artifact@v2
         if: always()
         with:
