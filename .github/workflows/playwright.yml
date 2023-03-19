@@ -40,11 +40,11 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y mailutils  
       - name : send mail
         run :  echo "See attached Playwright report for test execution results." | /usr/bin/mailx -s "Test Execution Results" -A playwright-report/index.html hariprasath.krishnamoorthy@ideas2it.com 
-      - name : install allure to PDF
+      - name : install allure to docx
         run  : |
-              sudo wget https://github.com/eroshenkoam/allure-pdf/releases/latest/download/allure-pdf
-              sudo chmod +x allure-pdf
-              allure-pdf allure-results -o report.pdf
+              sudo apt install python3
+              pip install git+https://github.com/typhoon-hil/allure-docx.git
+              allure-docx allure-results report.docx
       - name: inside allure report 
         run: |
              sudo cd allure report
