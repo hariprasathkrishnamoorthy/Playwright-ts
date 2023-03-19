@@ -43,8 +43,8 @@ jobs:
       - name : install send mailer
         run  : | 
                 sudo apt install ssmtp
-                mv /usr/sbin/sendmail /usr/sbin/sendmail.ORIG
-                ln -s /usr/sbin/ssmtp /usr/sbin/sendmail
+                sudo mv /usr/sbin/sendmail /usr/sbin/sendmail.ORIG
+                sudo ln -s /usr/sbin/ssmtp /usr/sbin/sendmail
       - name : test sample mail
         run :  echo "Subject hello" | sendmail test@example.com  
       - uses: actions/upload-artifact@v2
