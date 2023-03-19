@@ -45,10 +45,6 @@ jobs:
               sudo apt install python3
               pip install git+https://github.com/typhoon-hil/allure-docx.git
               allure-docx allure-results report.docx
-      - name: inside allure report 
-        run: |
-             sudo cd allure report
-             sudo ls
       - name : install send mailer
         run  : | 
                 sudo apt install ssmtp
