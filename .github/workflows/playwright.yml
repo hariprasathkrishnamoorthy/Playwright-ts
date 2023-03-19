@@ -28,6 +28,22 @@ jobs:
         run: npx playwright test --project=chromium
       - name: current working directory files
         run: sudo ls  
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        secure: true
+        subject: Github Actions job result
+        # Required recipients' addresses:
+        to: hariprasath.krishnamoorthy@ideas2it.com
+        # Required sender full name (address can be skipped):
+        from: Luke Skywalker 
+        # Optional plain body:
+        body: Build job of ${{github.repository}} completed successfully!
+        # Optional HTML body read from file:
+        # Optional attachments:
+        attachments: ./playwright-report/index.html
       - uses: actions/upload-artifact@v2
         if: always()
         with:
@@ -50,10 +66,8 @@ jobs:
         
       # - name: Generate Allure report
       #   run: |
-      #     allure generate /allure-results --clean -o allure-report
-      - name: Install mailx
-        run: sudo apt-get update && sudo apt-get install -y mailutils  
-      - name: Send report by email
-        run: |
-           echo "See attached Playwright report." | mailx -s "Playwright report" -a account.json  hariprasath.krishnamoorthy@ideas2it.com
-
+      # #     allure generate /allure-results --clean -o allure-report
+      # - name: Install mailx
+      #   run: sudo apt-get update && sudo apt-get install -y mailutils  
+      
+    
