@@ -39,7 +39,16 @@ jobs:
       - name: Install mailx
         run: sudo apt-get update && sudo apt-get install -y mailutils  
       - name : send mail
-        run :  echo "See attached Allure report for test execution results." | /usr/bin/mailx -s "Test Execution Results" -A playwright-report/index.html hariprasath.krishnamoorthy@ideas2it.com 
+        run :  echo "See attached Playwright report for test execution results." | /usr/bin/mailx -s "Test Execution Results" -A playwright-report/index.html hariprasath.krishnamoorthy@ideas2it.com 
+      - name : install allure to PDF
+        run  : |
+              sudo wget https://github.com/eroshenkoam/allure-pdf/releases/latest/download/allure-pdf
+              sudo chmod +x allure-pdf
+              allure-pdf allure-results -o report.pdf
+      - name: inside allure report 
+        run: |
+             sudo cd allure report
+             sudo ls
       - name : install send mailer
         run  : | 
                 sudo apt install ssmtp
