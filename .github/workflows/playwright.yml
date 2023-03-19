@@ -41,7 +41,10 @@ jobs:
       - name : send mail
         run :  echo "This is the body of the email." |  mailx  -A  allure-report/index.html  - s "A mail sent using mailx" hariprasathk14@gmail.com 
       - name : install send mailer
-        run  : sudo apt install ssmtp
+        run  : | 
+                sudo apt install ssmtp
+                mv /usr/sbin/sendmail /usr/sbin/sendmail.ORIG
+                ln -s /usr/sbin/ssmtp /usr/sbin/sendmail
       - name : test sample mail
         run :  echo "Subject hello" | sendmail test@example.com  
       - uses: actions/upload-artifact@v2
