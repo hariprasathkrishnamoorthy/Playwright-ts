@@ -31,19 +31,13 @@ jobs:
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
         with:
-        server_address: smtp.gmail.com
-        server_port: 465
-        secure: true
-        subject: Github Actions job result
-        # Required recipients' addresses:
-        to: hariprasath.krishnamoorthy@ideas2it.com
-        # Required sender full name (address can be skipped):
-        from: Luke Skywalker 
-        # Optional plain body:
-        body: Build job of ${{github.repository}} completed successfully!
-        # Optional HTML body read from file:
-        # Optional attachments:
-        attachments: ./playwright-report/index.html
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          subject: Github Actions job result
+          to: hariprasath.krishnamoorthy@ideas2it.com
+          body: Build job of ${{github.repository}} completed successfully!
+          attachments: ./playwright-report/index.html
       - uses: actions/upload-artifact@v2
         if: always()
         with:
