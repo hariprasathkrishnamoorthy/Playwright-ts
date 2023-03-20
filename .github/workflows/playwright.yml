@@ -28,6 +28,10 @@ jobs:
         run: npx playwright test --project=chromium
       - name: current working directory files
         run: sudo ls 
+      - name: Setup Java 
+        uses: actions/setup-java@v1
+        with:
+          java-version: '11'  
       - name: Install Allure command-line tool
         run: |
               wget -O allure-2.14.0.tgz https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.14.0/allure-commandline-2.14.0.tgz
@@ -38,22 +42,13 @@ jobs:
            allure generate allure-results --clean -o allure-report
       - name: Install mailx
         run: sudo apt-get update && sudo apt-get install -y mailutils  
-      - name : send mail
+      - name : Send E-mail
         run :  echo "See attached Playwright report for test execution results." | /usr/bin/mailx -s "Test Execution Results" -A playwright-report/index.html hariprasath.krishnamoorthy@ideas2it.com 
-      - name : install allure to docx
+      - name : Install allure to docx
         run  : |
               sudo apt install python3
               pip install git+https://github.com/typhoon-hil/allure-docx.git
               allure-docx allure-results report.docx
-      - name : install send mailer
-        run  : | 
-                sudo apt install ssmtp
-                sudo mv /usr/sbin/sendmail /usr/sbin/sendmail.ORIG
-                sudo ln -s /usr/sbin/ssmtp /usr/sbin/sendmail
-                sudo apt install postfix 
-                sudo dpkg-reconfigure postfix
-      - name : test sample mail
-        run :  echo "Subject hello" | sendmail hariprasathk14@gmail.com  
       - uses: actions/upload-artifact@v2
         if: always()
         with:
@@ -62,22 +57,9 @@ jobs:
           retention-days: 30
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Setup Java 
-        uses: actions/setup-java@v1
-        with:
-          java-version: '11'
-      # - name: Install Allure command-line tool
-      #   run: |
-      #         wget -O allure-2.14.0.tgz https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.14.0/allure-commandline-2.14.0.tgz
-      #         tar -zxvf allure-2.14.0.tgz -C /opt/
-      #         sudo ln -s /opt/allure-2.14.0/bin/allure /usr/bin/allure
       - name: Print current working directory files
         run: sudo ls      
         
-      # - name: Generate Allure report
-      #   run: |
-      # #     allure generate allure-results --clean -o allure-report
-      # - name: Install mailx
-      #   run: sudo apt-get update && sudo apt-get install -y mailutils  
+     
       
     
