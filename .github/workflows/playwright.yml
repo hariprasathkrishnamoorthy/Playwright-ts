@@ -52,14 +52,14 @@ jobs:
                sudo rm -r *
                cd
                exit
-         continue-on-error: true
-       - name : Connect to AWS Ubuntu server and move deploy allure report
+        continue-on-error: true
+      - name : Connect to AWS Ubuntu server and move deploy allure report
         run  : |
               scp -i AllureLinux.pem -r allure-report/ ubuntu@13.232.207.33:/var/www/html/
               ssh -i AllureLinux.pem ubuntu@13.232.207.33
               sudo service nginx start
               exit
-              
+
       - uses: actions/upload-artifact@v2
         if: always()
         with:
