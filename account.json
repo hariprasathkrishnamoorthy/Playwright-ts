@@ -1,6 +1,26 @@
-{
-     
+[
+    {
+         
+        "email": "admin@gmail.com",
+        "password": "1234"
+        
+    } ,  
+    
+   {
     "email": "admin@gmail.com",
+    "password": "myxdrs"
+    
+
+  },
+
+
+{
+    "email": "kk@gmail.com",
     "password": "1234"
     
+
+
 }
+
+
+]
