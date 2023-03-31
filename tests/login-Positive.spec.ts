@@ -14,9 +14,8 @@ test("Verify user can login with valid credentials ", async ({ page, request }, 
 
   const loginpage = new Loginpage(page);
   await loginpage.closeSideNavPopup();
-  await loginpage.enterMailandPassword(accountData);
+  await loginpage.enterMailandPassword(accountData[0]);
   await loginpage.submit();
   
 
-  //await sendResultNoti(request, testResult);
 });

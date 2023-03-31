@@ -50,7 +50,12 @@ export class Loginpage
     }
 
 
-
+  async invalidText(text: string | RegExp) :Promise <boolean>
+  {
+    await this.page.getByText(text).waitFor({state: "visible"});
+    return await this.page.getByText(text).isVisible();
+  }
+    
 
 }
 

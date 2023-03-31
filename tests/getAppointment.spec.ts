@@ -22,7 +22,7 @@ test("Verify user can login and get the Appointment ", async ({ page, request },
   await Homepage.clickOnLogin();
   const loginpage = new Loginpage(page);
   await loginpage.closeSideNavPopup();
-  await loginpage.enterMailandPassword(accountData);
+  await loginpage.enterMailandPassword(accountData[0]);
   await loginpage.submit();
   await Homepage.clickGetStartedforAppointment();
   const CustomUtil = new CustomUtils(page);
