@@ -44,11 +44,22 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y mailutils  
       - name : Send E-mail
         run :  echo "See attached Playwright report for test execution results." | /usr/bin/mailx -s "Test Execution Results" -A playwright-report/index.html hariprasath.krishnamoorthy@ideas2it.com  kiran@ideas2it.com
-      - name : Install allure to docx
+      - name : Connect to AWS Ubuntu server and clear Existing  Report
         run  : |
-              sudo apt install python3
-              pip install git+https://github.com/typhoon-hil/allure-docx.git
-              allure-docx allure-results report.docx
+               ssh -i AllureLinux.pem ubuntu@13.232.207.33
+               cd  /var/www/html
+               sudo service nginx stop
+               sudo rm -r *
+               cd
+               exit
+         continue-on-error: true
+       - name : Connect to AWS Ubuntu server and move deploy allure report
+        run  : |
+              scp -i AllureLinux.pem -r allure-report/ ubuntu@13.232.207.33:/var/www/html/
+              ssh -i AllureLinux.pem ubuntu@13.232.207.33
+              sudo service nginx start
+              exit
+              
       - uses: actions/upload-artifact@v2
         if: always()
         with:
