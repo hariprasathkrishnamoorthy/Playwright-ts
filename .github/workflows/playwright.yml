@@ -44,24 +44,27 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y mailutils  
       - name : Send E-mail
         run :  echo "See attached Playwright report for test execution results." | /usr/bin/mailx -s "Test Execution Results" -A playwright-report/index.html hariprasath.krishnamoorthy@ideas2it.com  kiran@ideas2it.com
-      - name : Connect to AWS Ubuntu server and clear Existing  Report
-        run  : |
-               ssh -i AllureLinux.pem ubuntu@13.232.207.33
-               cd  /var/www/html
-               sudo service nginx stop
-               sudo rm -r *
-               cd
-               exit
-        pty: true       
-        continue-on-error: true
-      - name : Connect to AWS Ubuntu server and move deploy allure report
-        run  : |
-              scp -i AllureLinux.pem -r allure-report/ ubuntu@13.232.207.33:/var/www/html/
-              ssh -i AllureLinux.pem ubuntu@13.232.207.33
-              sudo service nginx start
-              exit
-        pty: true       
+      
+      - name: Copy files to AWS EC2 instance
+        uses: appleboy/scp-action@master
+        with:
+          host: 13.232.207.33
+          username: ubuntu
+          key: ${{ secrets.AWS_PRIVATE_KEY }}
+          port: 22
+          source: allure-report/
+          target: /var/www/html/
 
+      - name: Connect to AWS EC2 instance
+        uses: appleboy/ssh-action@master
+        with:
+          host: 13.232.207.33
+          username: ubuntu
+          key: ${{ secrets.AWS_PRIVATE_KEY }}
+          port: 22
+          script: |
+            sudo service nginx start
+            exit
       - uses: actions/upload-artifact@v2
         if: always()
         with:
