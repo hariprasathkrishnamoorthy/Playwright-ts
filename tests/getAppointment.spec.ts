@@ -27,7 +27,7 @@ test("Verify user can login and get the Appointment ", async ({ page, request },
   await Homepage.clickGetStartedforAppointment();
   const CustomUtil = new CustomUtils(page);
   const Appointmentpage = new Appointment(page);
-  expect (await Appointmentpage.verifycalenderWidget('March 2023')).toBe(true);
+  expect (await Appointmentpage.verifycalenderWidget('April 2023')).toBe(true);
   await Appointmentpage.Selectdate(await CustomUtil.getdate(2));
   await Appointmentpage.verifyselecteddate("your selected date");
   await Appointmentpage.bookslot();
