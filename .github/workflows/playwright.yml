@@ -45,6 +45,20 @@ jobs:
       - name : Send E-mail
         run :  echo "See attached Playwright report for test execution results." | /usr/bin/mailx -s "Test Execution Results" -A playwright-report/index.html hariprasath.krishnamoorthy@ideas2it.com  kiran@ideas2it.com
       
+      - name: Connect to AWS EC2 instance and delete files
+        uses: appleboy/ssh-action@master
+        with:
+          host: 13.232.207.33
+          username: ubuntu
+          key: ${{ secrets.AWS_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd /var/www/html
+            rm -rf *
+            exit
+      
+      
+      
       - name: Copy files to AWS EC2 instance
         uses: appleboy/scp-action@master
         with:
@@ -55,7 +69,7 @@ jobs:
           source: allure-report/.
           target: /var/www/html/
 
-      - name: Connect to AWS EC2 instance
+      - name: Connect to AWS EC2 instance and start server
         uses: appleboy/ssh-action@master
         with:
           host: 13.232.207.33
@@ -63,6 +77,8 @@ jobs:
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           port: 22
           script: |
+            sudo service nginx stop
+            mv -v -f  /var/www/html/allure-report/*  /var/www/html/
             sudo service nginx start
             exit
       - uses: actions/upload-artifact@v2
