@@ -52,7 +52,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           port: 22
-          source: allure-report/*
+          source: allure-report/.
           target: /var/www/html/
 
       - name: Connect to AWS EC2 instance
