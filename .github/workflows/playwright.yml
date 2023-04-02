@@ -43,7 +43,7 @@ jobs:
       - name: Install mailx
         run: sudo apt-get update && sudo apt-get install -y mailutils  
       - name : Send E-mail
-        run :  echo "See attached Playwright report for test execution results." | /usr/bin/mailx -s "Test Execution Results" -A playwright-report/index.html hariprasath.krishnamoorthy@ideas2it.com  kiran@ideas2it.com
+        run :  echo "See attached Playwright report for test execution results. Launch http://13.232.207.33/ to view Allure Report" | /usr/bin/mailx -s "Test Execution Results" -A playwright-report/index.html hariprasath.krishnamoorthy@ideas2it.com  kiran@ideas2it.com
       
       - name: Connect to AWS EC2 instance and delete files
         uses: appleboy/ssh-action@master
