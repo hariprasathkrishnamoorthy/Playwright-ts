@@ -54,6 +54,7 @@ jobs:
           port: 22
           script: |
             cd /var/www/html
+            sudo service nginx stop
             rm -rf *
             exit
       
@@ -77,7 +78,6 @@ jobs:
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           port: 22
           script: |
-            sudo service nginx stop
             mv -v -f  /var/www/html/allure-report/*  /var/www/html/
             sudo service nginx start
             exit
