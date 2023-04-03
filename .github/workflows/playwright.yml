@@ -25,7 +25,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test getAppointment.spec.ts --project=chromium
+        run: npx playwright test getAppointment.spec.ts validateBlog.spec.ts --project=chromium
       - name: current working directory files
         run: sudo ls 
       - name: Setup Java 
