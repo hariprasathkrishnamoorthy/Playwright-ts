@@ -34,9 +34,9 @@ jobs:
           java-version: '11'  
       - name: Install Allure command-line tool
         run: |
-              wget -O allure-2.14.0.tgz https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.14.0/allure-commandline-2.14.0.tgz
-              tar -zxvf allure-2.14.0.tgz -C /opt/
-              sudo ln -s /opt/allure-2.14.0/bin/allure /usr/bin/allure   
+              wget -O allure-2.21.0.tgz https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.21.0/allure-commandline-2.21.0.tgz
+              tar -zxvf allure-2.21.0.tgz -C /opt/
+              sudo ln -s /opt/allure-2.21.0/bin/allure /usr/bin/allure   
       - name: Generate Allure report
         run: |
            allure generate allure-results --clean -o allure-report
